@@ -25,11 +25,371 @@
     <link rel="stylesheet" type="text/css" href="/css/site.css">
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
 
+
+    <style>
+      .fullheight {
+        min-height:calc(100vh - 100px);
+        min-width:calc(100vw - 100px);
+      }
+
+      @media screen and (max-width: 640px) {
+        .fullheight {
+          min-height:calc(100vh - 40px);
+          min-width:calc(100vw - 40px);
+        }
+      }
+
+      /* Vertical Alignment Center CSS */
+      .valign-center-outer{
+        display: table;
+        height: 100%;
+        width: 100%;
+      }
+      .valign-center-inner{
+        display: table-cell;
+        text-align: center;
+        vertical-align: middle;
+      }
+      /* Section 3 CSS */
+      .sec3-container {
+        text-align: center;
+      }
+
+      @media screen and (min-width: 641px) {
+        .sec3-container {
+          display: table-cell;
+          vertical-align: middle;
+          float: unset;
+          width: 50%;
+        }
+      }
+
+      @media screen and (max-width: 640px) {
+        .sec3-container {
+          width: 100%;
+        }
+
+        .left-container {
+          margin-bottom: 50px;
+        }
+      }
+
+      /* Section 4 CSS */
+
+      .sec4-title {
+        color: white;
+        font-family: lato;
+        font-size: 75px;
+        font-style: normal;
+        font-weight: 400;
+        letter-spacing: 1.5px;
+        line-height: 75x;
+        margin-bottom: 50px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 50px;
+        pointer-events: auto;
+        text-align: center;
+        text-rendering: optimizelegibility;
+        text-shadow: rgb(0, 0, 0) 0px 0px 10px;
+        text-transform: none;
+        white-space: nowrap;
+      }
+
+      @media screen and (min-width:451px) and  (max-width: 640px) {
+        .sec4-title {
+          font-size: 30px;
+          line-height: 30px;
+        }
+      }
+
+      .call-to-action-btn{
+        border-color: #fff;
+        border-style: solid;
+        border-width: 3px;
+        padding: 25px 46px;
+        font-family: futura-pt;
+        font-size: 12px;
+        text-transform: uppercase;
+        letter-spacing: 0.3em;
+        display: inline-block;
+        width: auto;
+        line-height: normal;
+        text-shadow: 0px 0px 10px black;
+        margin: 50px;
+        font-weight: 800;
+      }
+
+      @media screen and (max-width:450px) {
+        .sec4-title {
+          font-size: 20px;
+          line-height: 30px;
+        }
+
+        .call-to-action-btn{
+          margin: 10px 0px;
+          width: 180px;
+        }
+      }
+
+      /* Section 5 - Gallery CSS */
+      .thumb-image {
+        cursor: pointer;
+        left: -48px;
+        top: 0px;
+        width: 288px;
+        height: 192px;
+        position: relative;
+      }
+
+      .gallery-image {
+          cursor: pointer;
+      }
+
+      .gallery-image img {
+          max-width: calc(100% - 20px);
+          height: auto;
+          padding: 10px;
+      }
+
+
+      @media screen and (max-width: 640px) {
+        .gallery-image img {
+          max-width: 100%;
+          width: 100vw;
+        }
+      }
+
+      /* Gallery Image Modal window - CSS */
+      .modal {
+        display: none;
+        position: fixed;
+        z-index: 1;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto;
+        background-color: rgba(0, 0, 0, 0.7);
+      }
+
+      @media screen and (max-width: 640px) {
+        .modal {
+          top:40px;
+        }
+      }
+
+      .modal-content {
+          position: relative;
+          margin: auto;
+          max-width: 100%; /* Set maximum width to 100% of screen width */
+          max-height: 100%; /* Set maximum height to 100% of screen height */
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          padding: 50px;
+      }
+
+      #modal-wrapper {
+          max-width: calc(100vw - 50px * 2); /* Set maximum image width to fit the screen */
+          max-height: calc(100vh - 50px * 2); /* Set maximum image height to fit the screen */
+          background-color: white;
+      }
+
+      .modal img {
+          padding:10px;
+          max-width: calc(100vw - 50px * 2 - 20px); /* Set maximum image width to fit the screen */
+          max-height: calc(100vh - 50px * 2 - 20px); /* Set maximum image height to fit the screen */
+      }
+
+      .icon_gallery {
+          font-size: 30px;
+          font-weight: bold;
+          cursor: pointer;
+          color: white;
+      }
+
+      .close {
+          position: absolute;
+          top: 20px;
+          right: 30px;
+      }
+
+      .prev,
+      .next {
+          position: absolute;
+          top: 50%;
+          width: auto;
+          padding: 16px;
+          margin-top: -22px;
+      }
+
+      .prev {
+          left: 20px;
+      }
+
+      .next {
+          right: 20px;
+      }
+
+      @media screen and (max-width: 640px) {
+        .prev {
+            left: 0px;
+        }
+
+        .next {
+            right: 0px;
+        }
+
+        .close {
+          top: 20px;
+          right: 15px;
+      }
+      }
+    </style>
+
   </head>
 
-  <body class="tweak-social-icons-style-regular tweak-social-icons-shape-square tweak-site-width-option-full-background tweak-icon-weight-light tweak-site-border-show tweak-site-ajax-loading-enable tweak-site-ajax-loading-bar-show ancillary-header-top-left-layout-horizontal ancillary-header-top-center-layout-stacked ancillary-header-top-right-layout-horizontal ancillary-header-bottom-left-layout-horizontal ancillary-header-bottom-center-layout-horizontal ancillary-header-bottom-right-layout-horizontal ancillary-header-branding-position-bottom-left ancillary-header-tagline-position-hide ancillary-header-primary-nav-position-bottom-center ancillary-header-secondary-nav-position-bottom-right ancillary-header-social-position-hide ancillary-header-search-position-hide ancillary-header-cart-position-bottom-center ancillary-header-account-position-hide tweak-header-primary-nav-hover-style-fade tweak-header-primary-nav-button-style-outline tweak-header-primary-nav-button-shape-rounded tweak-header-secondary-nav-hover-style-button tweak-header-secondary-nav-button-style-outline tweak-header-secondary-nav-button-shape-square tweak-header-search-style-rectangle tweak-header-search-placeholder-show tweak-header-cart-style-text tweak-header-account-style-text tweak-overlay-parallax-enabled tweak-overlay-parallax-new-math tweak-index-nav-style-none tweak-index-nav-position-right tweak-index-page-fullscreen-first-page-only tweak-index-page-apply-bottom-spacing tweak-index-page-scroll-indicator-icon-only tweak-index-page-scroll-indicator-icon-line tweak-index-page-scroll-indicator-icon-weight-light tweak-index-gallery-layout-packed tweak-index-gallery-spacing-top-bottom-show tweak-index-gallery-fixed-height tweak-index-gallery-apply-bottom-spacing tweak-index-gallery-hover-style-fade tweak-index-gallery-controls-small-arrows tweak-index-gallery-controls-icon-weight-hairline tweak-index-gallery-indicators-lines tweak-index-gallery-autoplay-enable tweak-index-gallery-transition-fade tweak-index-gallery-content-position-middle-center tweak-index-gallery-content-text-alignment-center tweak-footer-show tweak-footer-layout-stacked tweak-footer-layout-columns-auto tweak-footer-stacked-alignment-center tweak-mobile-bar-top-fixed ancillary-mobile-bar-branding-position-top-left ancillary-mobile-bar-menu-icon-position-top-right tweak-mobile-bar-menu-icon-horizontal-dots ancillary-mobile-bar-search-icon-position-hide ancillary-mobile-bar-cart-position-bottom-center tweak-mobile-bar-cart-style-cart ancillary-mobile-bar-account-position-hide tweak-mobile-bar-account-style-text tweak-mobile-overlay-slide-origin-left tweak-mobile-overlay-close-show tweak-mobile-overlay-menu-primary-button-style-solid tweak-mobile-overlay-menu-primary-button-shape-square tweak-mobile-overlay-menu-secondary-button-style-outline tweak-mobile-overlay-menu-secondary-button-shape-square tweak-quote-block-alignment-left tweak-blog-meta-primary-category tweak-blog-meta-secondary-date tweak-blog-list-style-grid tweak-blog-list-separator-show tweak-blog-list-alignment-left tweak-blog-list-item-image-show tweak-blog-list-item-image-aspect-ratio-grid-23-standard-vertical tweak-blog-list-item-image-aspect-ratio-stacked-11-square tweak-blog-list-item-title-show tweak-blog-list-item-excerpt-show tweak-blog-list-item-body-show tweak-blog-list-item-readmore-inline tweak-blog-list-item-meta-position-below-content tweak-blog-list-pagination-link-label-show tweak-blog-list-pagination-link-icon-weight-light tweak-blog-item-alignment-center tweak-blog-item-meta-position-below-title tweak-blog-item-share-position-below-content tweak-blog-item-pagination-link-label-show tweak-blog-item-pagination-link-title-show tweak-blog-item-pagination-link-meta-hide tweak-blog-item-pagination-link-icon-weight-light event-thumbnails event-thumbnail-size-32-standard event-date-label event-list-show-cats event-list-date event-list-time event-list-address event-excerpts event-item-back-link gallery-design-slideshow aspect-ratio-auto lightbox-style-dark gallery-navigation-bullets gallery-info-overlay-show-on-hover gallery-aspect-ratio-32-standard gallery-arrow-style-no-background gallery-transitions-fade gallery-show-arrows gallery-auto-crop tweak-product-list-image-aspect-ratio-11-square tweak-product-list-item-hover-behavior-show-alternate-image tweak-product-list-meta-position-under tweak-product-list-mobile-meta-position-under tweak-product-list-meta-alignment-under-center tweak-product-list-meta-alignment-overlay-center-center tweak-product-list-show-title tweak-product-list-show-price tweak-product-list-filter-display-top tweak-product-list-filter-alignment-center tweak-product-item-nav-show-breadcrumb-and-pagination tweak-product-item-nav-pagination-style-previousnext tweak-product-item-nav-breadcrumb-alignment-left tweak-product-item-nav-pagination-alignment-split tweak-product-item-gallery-position-left tweak-product-item-gallery-design-stacked tweak-product-item-gallery-aspect-ratio-11-square tweak-product-item-gallery-thumbnail-alignment-left tweak-product-item-details-alignment-left tweak-product-item-details-show-title tweak-product-item-details-show-price tweak-product-item-details-show-excerpt tweak-product-item-details-excerpt-position-below-price tweak-product-item-details-show-share-buttons tweak-product-item-details-show-variants tweak-product-item-details-show-quantity tweak-product-item-details-options-style-square tweak-product-item-details-show-add-to-cart-button tweak-product-item-details-add-to-cart-button-style-outline tweak-product-item-details-add-to-cart-button-shape-square tweak-product-item-details-add-to-cart-button-padding-large tweak-product-item-image-zoom-enabled tweak-product-item-image-zoom-behavior-click tweak-product-item-lightbox-enabled tweak-related-products-image-aspect-ratio-11-square tweak-related-products-meta-alignment-under-center tweak-product-badge-style-none tweak-product-badge-position-top-right tweak-product-badge-inset-floating newsletter-style-custom hide-opentable-icons opentable-style-dark small-button-style-outline small-button-shape-square medium-button-style-outline medium-button-shape-square large-button-style-outline large-button-shape-square image-block-poster-text-alignment-center image-block-card-content-position-center image-block-card-text-alignment-left image-block-overlap-content-position-center image-block-overlap-text-alignment-left image-block-collage-content-position-center image-block-collage-text-alignment-center image-block-stack-dynamic-font-sizing image-block-stack-text-alignment-left button-style-outline button-corner-style-square tweak-product-quick-view-button-style-docked tweak-product-quick-view-button-position-center tweak-product-quick-view-lightbox-excerpt-display-truncate tweak-product-quick-view-lightbox-show-arrows tweak-product-quick-view-lightbox-show-close-button tweak-product-quick-view-lightbox-controls-weight-light tweak-share-buttons-style-icon-only tweak-share-buttons-icons-show tweak-share-buttons-standard-icon-color tweak-share-buttons-standard-background-color native-currency-code-usd collection-type-index collection-layout-default homepage view-list mobile-style-available sqs-has-custom-cart has-site-title has-parallax-images enable-load-effects has-primary-nav has-footer-nav parallax-item-positioning-method-fixed">
+  <body class="
+
+    has-site-title
+    ancillary-header-branding-position-bottom-left
+    tweak-site-width-option-full-background
+    tweak-header-primary-nav-hover-style-fade
+    tweak-site-border-show
+    tweak-footer-show
+    tweak-footer-layout-stacked
+    tweak-footer-stacked-alignment-center
+    tweak-mobile-bar-top-fixed
+    tweak-mobile-overlay-slide-origin-left
+    tweak-mobile-overlay-menu-primary-button-style-solid
+    tweak-mobile-overlay-close-show
+    tweak-mobile-bar-menu-icon-horizontal-dots
+    tweak-index-page-scroll-indicator-icon-only
+    tweak-index-page-scroll-indicator-icon-weight-light
+    tweak-index-page-scroll-indicator-icon-line
+  ">
+
+    <!--
+    tweak-blog-item-alignment-center
+    tweak-blog-item-meta-position-below-title
+    tweak-blog-item-pagination-link-icon-weight-light
+    tweak-blog-item-pagination-link-label-show
+    tweak-blog-item-pagination-link-meta-hide
+    tweak-blog-item-pagination-link-title-show
+    tweak-blog-item-share-position-below-content
+    tweak-blog-list-alignment-left
+    tweak-blog-list-item-body-show
+    tweak-blog-list-item-excerpt-show
+    tweak-blog-list-item-image-aspect-ratio-grid-23-standard-vertical
+    tweak-blog-list-item-image-aspect-ratio-stacked-11-square
+    tweak-blog-list-item-image-show
+    tweak-blog-list-item-meta-position-below-content
+    tweak-blog-list-item-readmore-inline
+    tweak-blog-list-item-title-show
+    tweak-blog-list-pagination-link-icon-weight-light
+    tweak-blog-list-pagination-link-label-show
+    tweak-blog-list-separator-show
+    tweak-blog-list-style-grid
+    tweak-blog-meta-primary-category
+    tweak-blog-meta-secondary-date
+    tweak-footer-layout-columns-auto
+    tweak-header-account-style-text
+    tweak-header-cart-style-text
+    tweak-header-primary-nav-button-shape-rounded
+    tweak-header-primary-nav-button-style-outline
+    tweak-header-primary-nav-hover-style-fade
+    tweak-header-search-placeholder-show
+    tweak-header-search-style-rectangle
+    tweak-header-secondary-nav-button-shape-square
+    tweak-header-secondary-nav-button-style-outline
+    tweak-header-secondary-nav-hover-style-button
+    tweak-icon-weight-light
+    tweak-index-gallery-apply-bottom-spacing
+    tweak-index-gallery-autoplay-enable
+    tweak-index-gallery-content-position-middle-center
+    tweak-index-gallery-content-text-alignment-center
+    tweak-index-gallery-controls-icon-weight-hairline
+    tweak-index-gallery-controls-small-arrows
+    tweak-index-gallery-fixed-height
+    tweak-index-gallery-hover-style-fade
+    tweak-index-gallery-indicators-lines
+    tweak-index-gallery-layout-packed
+    tweak-index-gallery-spacing-top-bottom-show
+    tweak-index-gallery-transition-fade
+    tweak-index-nav-position-right
+    tweak-index-nav-style-none
+    tweak-index-page-apply-bottom-spacing
+    tweak-index-page-fullscreen-first-page-only
+    tweak-mobile-bar-account-style-text
+    tweak-mobile-bar-cart-style-cart
+    tweak-mobile-overlay-menu-primary-button-shape-square
+    tweak-mobile-overlay-menu-primary-button-style-solid
+    tweak-mobile-overlay-menu-secondary-button-shape-square
+    tweak-mobile-overlay-menu-secondary-button-style-outline
+    tweak-overlay-parallax-enabled
+    tweak-overlay-parallax-new-math
+    tweak-product-badge-inset-floating
+    tweak-product-badge-position-top-right
+    tweak-product-badge-style-none
+    tweak-product-item-details-add-to-cart-button-padding-large
+    tweak-product-item-details-add-to-cart-button-shape-square
+    tweak-product-item-details-add-to-cart-button-style-outline
+    tweak-product-item-details-alignment-left
+    tweak-product-item-details-excerpt-position-below-price
+    tweak-product-item-details-options-style-square
+    tweak-product-item-details-show-add-to-cart-button
+    tweak-product-item-details-show-excerpt
+    tweak-product-item-details-show-price
+    tweak-product-item-details-show-quantity
+    tweak-product-item-details-show-share-buttons
+    tweak-product-item-details-show-title
+    tweak-product-item-details-show-variants
+    tweak-product-item-gallery-aspect-ratio-11-square
+    tweak-product-item-gallery-design-stacked
+    tweak-product-item-gallery-position-left
+    tweak-product-item-gallery-thumbnail-alignment-left
+    tweak-product-item-image-zoom-behavior-click
+    tweak-product-item-image-zoom-enabled
+    tweak-product-item-lightbox-enabled
+    tweak-product-item-nav-breadcrumb-alignment-left
+    tweak-product-item-nav-pagination-alignment-split
+    tweak-product-item-nav-pagination-style-previousnext
+    tweak-product-item-nav-show-breadcrumb-and-pagination
+    tweak-product-list-filter-alignment-center
+    tweak-product-list-filter-display-top
+    tweak-product-list-image-aspect-ratio-11-square
+    tweak-product-list-item-hover-behavior-show-alternate-image
+    tweak-product-list-meta-alignment-overlay-center-center
+    tweak-product-list-meta-alignment-under-center
+    tweak-product-list-meta-position-under
+    tweak-product-list-mobile-meta-position-under
+    tweak-product-list-show-price
+    tweak-product-list-show-title
+    tweak-product-quick-view-button-position-center
+    tweak-product-quick-view-button-style-docked
+    tweak-product-quick-view-lightbox-controls-weight-light
+    tweak-product-quick-view-lightbox-excerpt-display-truncate
+    tweak-product-quick-view-lightbox-show-arrows
+    tweak-product-quick-view-lightbox-show-close-button
+    tweak-quote-block-alignment-left
+    tweak-related-products-image-aspect-ratio-11-square
+    tweak-related-products-meta-alignment-under-center
+    tweak-share-buttons-icons-show
+    tweak-share-buttons-standard-background-color
+    tweak-share-buttons-standard-icon-color
+    tweak-share-buttons-style-icon-only
+    tweak-site-ajax-loading-bar-show
+    tweak-site-ajax-loading-enable
+    tweak-social-icons-shape-square
+    view-list
+    tweak-social-icons-style-regular
+    -->
+
     <div class="Loader"></div>
     <div class="Mobile loaded">
+
       <div class="Mobile-bar Mobile-bar--top" data-nc-group="top" data-controller="MobileOffset" data-controllers-bound="MobileOffset">
         <div data-nc-container="top-left">
           <a href="/" class="Mobile-bar-branding" data-nc-element="branding"> Cave Country Retreat </a>
@@ -68,11 +428,13 @@
           </button>
         </div>
       </div>
+
       <div class="Mobile-bar Mobile-bar--bottom" data-nc-group="bottom" data-controller="MobileOffset" data-controllers-bound="MobileOffset">
         <div data-nc-container="bottom-left"></div>
         <div data-nc-container="bottom-center"></div>
         <div data-nc-container="bottom-right"></div>
       </div>
+
       <div class="Mobile-overlay">
         <div class="Mobile-overlay-menu" data-controller="MobileOverlayFolders" data-controllers-bound="MobileOverlayFolders">
           <div class="Mobile-overlay-menu-main">
@@ -80,7 +442,7 @@
               <a href="https://airbnb.com/h/cavecountyretreat" target="_blank" class="Mobile-overlay-nav-item"> AirBnB </a>
               <a href="https://www.vrbo.com/3570520" target="_blank" class="Mobile-overlay-nav-item"> VRBO </a>
               <a href="https://www.instagram.com/cavecountryretreat/" target="_blank" class="Mobile-overlay-nav-item"> Instagram </a>
-              <a href="https://www.instagram.com/cavecountryretreat/" target="_blank" class="Mobile-overlay-nav-item"> Facebook </a>
+              <a href="https://www.facebook.com/cavecountryretreat/" target="_blank" class="Mobile-overlay-nav-item"> Facebook </a>
             </nav>
             <nav class="Mobile-overlay-nav Mobile-overlay-nav--secondary"></nav>
           </div>
@@ -93,9 +455,10 @@
         </button>
         <div class="Mobile-overlay-back" data-controller="MobileOverlayToggle" data-controllers-bound="MobileOverlayToggle"></div>
       </div>
+
     </div>
+
     <div class="Site loaded" data-nc-base="header" data-controller="AncillaryLayout" data-controllers-bound="AncillaryLayout">
-      <div class="sqs-announcement-bar-dropzone"></div>
       <header class="Header Header--top">
         <div class="Header-inner Header-inner--top" data-nc-group="top">
           <div data-nc-container="top-left"></div>
@@ -103,7 +466,9 @@
           <div data-nc-container="top-right"></div>
         </div>
       </header>
-      <div class="parallax1 Site-inner Site-inner--index" data-controller="HeaderOverlay" data-controllers-bound="HeaderOverlay">
+
+      <div class="Site-inner Site-inner--index" data-controller="HeaderOverlay" data-controllers-bound="HeaderOverlay">
+
         <header class="Header Header--bottom Header--overlay">
           <div class="Header-inner Header-inner--bottom" data-nc-group="bottom">
             <div data-nc-container="bottom-left">
@@ -121,53 +486,34 @@
             </div>
           </div>
         </header>
+
         <div class="Content-outer">
           <main class="Index">
 
-            <section id="section1" class="Index-page Index-page--has-image" style="min-height: calc(100vh - 100px);">
-              <div class="Index-page-scroll-indicator">
-                <div class="Index-page-scroll-indicator-text">Scroll</div>
-                <svg class="Index-page-scroll-indicator-arrow Icon Icon--caretLarge--down" viewBox="0 0 48 23">
-                  <use xlink:href="/assets/ui-icons.svg#caret-down-large-icon"></use>
-                </svg>
-                <div class="Index-page-scroll-indicator-line"></div>
-              </div>
-              <div class="Index-page-content  sqs-alternate-block-style-container" style="margin-top: 90px;">
-                <div class="sqs-layout sqs-grid-12 columns-12" id="page-64efba578403425e3a171521">
-                  <div class="row sqs-row">
-                    <div class="col sqs-col-12 span-12">
-                      <div class="row sqs-row">
-                        <div class="col sqs-col-1 span-1">
-                          <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" id="block-3e74e7ca08e89076d1fe">
-                            <div class="sqs-block-content">&nbsp;</div>
-                          </div>
-                        </div>
-                        <div class="col sqs-col-11 span-11">
-                          <div class="row sqs-row">
-                            <div class="col sqs-col-10 span-10">
-                              <div class="sqs-block html-block sqs-block-html" id="block-a14470a5364abb65e843">
-                                <div class="sqs-block-content">
-                                  <div class="sqs-html-content">
-                                    <h2 style="text-align:center;white-space:pre-wrap;">alachua / florida</h2>
-                                    <h1 style="text-align:center;white-space:pre-wrap;">Cave Country Retreat</h1>
-                                  </div>
-                                </div>
-                              </div>
-                              <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" id="block-93dc1bf059a174a9fa58">
-                                <div class="sqs-block-content">&nbsp;</div>
-                              </div>
-                            </div>
-                            <div class="col sqs-col-1 span-1">
-                              <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" id="block-ebc1c869430ab56cb77a">
-                                <div class="sqs-block-content">&nbsp;</div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
+            <section id="section1" class="Index-page Index-page--has-image" style="overflow: hidden;">
+              <div class="parallax1 parallax-bg fullheight">
+
+                <div class="Index-page-scroll-indicator">
+                  <div class="Index-page-scroll-indicator-text">Scroll</div>
+                  <svg class="Index-page-scroll-indicator-arrow Icon Icon--caretLarge--down" viewBox="0 0 48 23">
+                    <use xlink:href="/assets/ui-icons.svg#caret-down-large-icon"></use>
+                  </svg>
+                  <div class="Index-page-scroll-indicator-line"></div>
+                </div>
+
+                <div class="row sqs-row fullheight">
+                  <div class="col sqs-col-12 span-12 fullheight">
+
+                    <div class="valign-center-outer fullheight">
+                      <div class="valign-center-inner">
+                        <h2 style="text-align:center;">alachua / florida</h2>
+                        <h1 style="text-align:center;">Cave Country Retreat</h1>
                       </div>
                     </div>
+
                   </div>
                 </div>
+
               </div>
             </section>
 
@@ -179,7 +525,7 @@
                       <div class="sqs-block html-block sqs-block-html">
                         <div class="sqs-block-content">
                           <div class="sqs-html-content">
-                            <h3 style="text-align:center;white-space:pre-wrap;">🏡 Cozy Haven in Central Florida's Enchanting "Cave Country" 🏞️</h3>
+                            <h3 style="text-align:center;">🏡 Cozy Haven in Central Florida's Enchanting "Cave Country" 🏞️</h3>
                           </div>
                         </div>
                       </div>
@@ -205,85 +551,48 @@
                 <div class="sqs-layout sqs-grid-12 columns-12" id="page-64efb8072b6f755fa4e254e6">
                   <div class="row sqs-row">
                     <div class="col sqs-col-12 span-12">
-                      <div class="row sqs-row">
-                        <div class="col sqs-col-6 span-6">
-                          <div class="sqs-block html-block sqs-block-html" id="block-3911e0ea5142be39aff0">
-                            <div class="sqs-block-content">
-                              <div class="sqs-html-content">
-                                <h2 style="white-space:pre-wrap; text-align:center;">An Inviting Escape</h2>
-                              </div>
-                            </div>
-                          </div>
+
+                      <div class="row sqs-row" style="display: table;">
+
+                        <div class="sec3-container left-container">
+                          <h2>An Inviting Escape</h2>
                         </div>
-                        <div class="col sqs-col-6 span-6">
-                          <div class="sqs-block html-block sqs-block-html">
-                            <div class="sqs-block-content">
-                              <div class="sqs-html-content">
-                                <p style="text-align:center;white-space:pre-wrap;">🏡 Cozy Haven in Central Florida's Enchanting "Cave Country" 🏞️</p>
-                                <p style="white-space:pre-wrap; text-align: justify;">Discover the epitome of tranquility and adventure in the heart of Central Florida's captivating "Cave Country." Nestled amidst pristine natural beauty, this remarkable 3-bedroom house beckons to cave divers from around the world, offering a haven where nature's allure meets subterranean exploration.</p>
-                              </div>
-                            </div>
-                          </div>
+
+                        <div class="sec3-container">
+                          <p style="text-align:center; font-size: 17px; font-weight: bolder;">🏡 Cozy Haven in Central Florida's Enchanting "Cave Country" 🏞️</p>
+                          <p style="text-align:justify;">
+                            Discover the epitome of tranquility and adventure in the heart of Central Florida's captivating "Cave Country."
+                            Nestled amidst pristine natural beauty, this remarkable 3-bedroom house beckons to cave divers from around the world,
+                            offering a haven where nature's allure meets subterranean exploration.
+                          </p>
                         </div>
+
                       </div>
+
                     </div>
                   </div>
                 </div>
               </div>
             </section>
 
-            <section id="section4" class="parallax2 Index-page Index-page--has-image">
-              <div class="Index-page-content  sqs-alternate-block-style-container">
-                <div class="sqs-layout sqs-grid-12 columns-12" id="page-64efba80ff5b3533fcd2850a">
-                  <div class="row sqs-row">
-                    <div class="col sqs-col-12 span-12"  style="text-shadow: 0px 0px 10px black; font-weight: bolder;">
-                      <div class="row sqs-row">
-                        <div class="col sqs-col-1 span-1">
-                          <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" id="block-dd7b60accc73cacb8ddc">
-                            <div class="sqs-block-content">&nbsp;</div>
-                          </div>
-                        </div>
-                        <div class="col sqs-col-10 span-10">
-                          <div class="sqs-block html-block sqs-block-html" id="block-cdf220f2829956f9a398">
-                            <div class="sqs-block-content">
-                              <div class="sqs-html-content">
-                                <h1 style="text-align:center; white-space: nowrap; font-size: 4vw;">We <em>can't wait</em> to see you. </h1>
-                              </div>
-                            </div>
-                          </div>
-                          <div class="col sqs-col-10 span-10">
-                            <div class="sqs-block spacer-block sqs-block-spacer sized vsize-2" id="block-dd7b60accc73cacb8ddc">
-                              <div class="sqs-block-content">&nbsp;</div>
-                            </div>
-                          </div>
-                          <div class="col sqs-col-5 span-5">
-                            <div class="sqs-block button-block sqs-block-button">
-                              <div class="sqs-block-content">
-                                <div class="sqs-block-button-container sqs-block-button-container--center">
-                                  <a href="https://airbnb.com/h/cavecountyretreat" class="sqs-block-button-element--large sqs-button-element--secondary sqs-block-button-element" target="_blank"> Book on AirBnB </a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
+            <section id="section4" class="Index-page Index-page--has-image">
+              <div class="parallax2 parallax-bg fullheight">
 
-                          <div class="col sqs-col-5 span-5">
-                            <div class="sqs-block button-block sqs-block-button">
-                              <div class="sqs-block-content">
-                                <div class="sqs-block-button-container sqs-block-button-container--center">
-                                  <a href="https://airbnb.com/h/cavecountyretreat" class="sqs-block-button-element--large sqs-button-element--secondary sqs-block-button-element" target="_blank"> Book on VRBO </a>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                        <div class="col sqs-col-1 span-1">
-                          <div class="sqs-block spacer-block sqs-block-spacer sized vsize-1" id="block-438b1f0895c50d149045">
-                            <div class="sqs-block-content">&nbsp;</div>
-                          </div>
-                        </div>
+                <div class="row sqs-row fullheight">
+                  <div class="col sqs-col-12 span-12 fullheight">
+
+                    <div class="valign-center-outer fullheight">
+                      <div class="valign-center-inner">
+
+                        <p class="sec4-title">We <em>can't wait</em> to see you. </p>
+
+                        <a href="https://airbnb.com/h/cavecountyretreat" class="call-to-action-btn" target="_blank"> Book on AirBnB </a>
+                        <a href="https://www.vrbo.com/3570520" class="call-to-action-btn" target="_blank"> Book on VRBO </a>
+
                       </div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </section>
@@ -298,12 +607,12 @@
                           <div class="sqs-block html-block sqs-block-html" id="block-8cc1da0e4e53368e5a92">
                             <div class="sqs-block-content">
                               <div class="sqs-html-content">
-                                <p style="text-align:center;white-space:pre-wrap;">Alachua, FL</p>
+                                <p style="text-align:center;">Alachua, FL</p>
                               </div>
                             </div>
                           </div>
 
-                          <iframe src="https://snazzymaps.com/embed/518912" width="595px" height="403px" style="border:none; padding: 17px;" loading="lazy"></iframe>
+                          <iframe src="https://snazzymaps.com/embed/518912" width="595px" height="425px" style="border:none; padding: 17px;" loading="lazy"></iframe>
 
                         </div>
                         <div class="col sqs-col-6 span-6">
@@ -311,61 +620,21 @@
                             <div class="sqs-block-content">
                               <div class="sqs-html-content">
                                 <p style="text-align:center;">
-                                  <a href="https://www.instagram.com/cavecountryretreat/" target="_blank">Instagram</a>&nbsp; / &nbsp; <a href="https://www.instagram.com/cavecountryretreat/" target="_blank">Facebook</a>
+                                  <a href="https://www.instagram.com/cavecountryretreat/" target="_blank">Instagram</a>
+                                  &nbsp; / &nbsp;
+                                  <a href="https://www.facebook.com/cavecountryretreat/" target="_blank">Facebook</a>
                                 </p>
                               </div>
                             </div>
                           </div>
+
                           <div class="sqs-block gallery-block sqs-block-gallery" id="gallery-block">
                             <div class="sqs-block-content">
-                              <div class="sqs-gallery-container sqs-gallery-block-grid sqs-gallery-aspect-ratio-square sqs-gallery-thumbnails-per-row-3 sqs-gallery-block-show-meta block-animation-none clear">
-                                <div class="sqs-gallery sqs-gallery-design-grid">
-                                  <div class="slide sqs-gallery-design-grid-slide">
-                                    <div class="margin-wrapper">
-                                      <a role="presentation" class="image-slide-anchor content-fill" style="overflow: hidden;">
-                                        <img class="thumb-image loaded" style="left: -48px; top: 0px; width: 288px; height: 192px; position: relative;" src="images/thumbs/1.jpg">
-                                      </a>
-                                    </div>
-                                  </div>
-                                  <div class="slide sqs-gallery-design-grid-slide">
-                                    <div class="margin-wrapper">
-                                      <a role="presentation" class="image-slide-anchor content-fill" style="overflow: hidden;">
-                                        <img class="thumb-image loaded" style="left: -48px; top: 0px; width: 288px; height: 192px; position: relative;" src="images/thumbs/2.jpg">
-                                      </a>
-                                    </div>
-                                  </div>
 
-                                  <div class="slide sqs-gallery-design-grid-slide">
-                                    <div class="margin-wrapper">
-                                      <a role="presentation" class="image-slide-anchor content-fill" style="overflow: hidden;">
-                                        <img class="thumb-image loaded" style="left: -48px; top: 0px; width: 288px; height: 192px; position: relative;" src="images/thumbs/3.jpg">
-                                      </a>
-                                    </div>
-                                  </div>
-
-                                  <div class="slide sqs-gallery-design-grid-slide">
-                                    <div class="margin-wrapper">
-                                      <a role="presentation" class="image-slide-anchor content-fill" style="overflow: hidden;">
-                                        <img class="thumb-image loaded" style="left: -48px; top: 0px; width: 288px; height: 192px; position: relative;" src="images/thumbs/4.jpg">
-                                      </a>
-                                    </div>
-                                  </div>
-
-                                  <div class="slide sqs-gallery-design-grid-slide">
-                                    <div class="margin-wrapper">
-                                      <a role="presentation" class="image-slide-anchor content-fill" style="overflow: hidden;">
-                                        <img class="thumb-image loaded" style="left: -48px; top: 0px; width: 288px; height: 192px; position: relative;" src="images/thumbs/5.jpg">
-                                      </a>
-                                    </div>
-                                  </div>
-
-                                  <div class="slide sqs-gallery-design-grid-slide">
-                                    <div class="margin-wrapper">
-                                      <a role="presentation" class="image-slide-anchor content-fill" style="overflow: hidden;">
-                                        <img class="thumb-image loaded" style="left: -48px; top: 0px; width: 288px; height: 192px; position: relative;" src="images/thumbs/6.jpg">
-                                      </a>
-                                    </div>
-                                  </div>
+                              <div class="sqs-layout sqs-grid-12 columns-12" id="page-64efbcdf7cd708538a01b57b">
+                                <div id="gallery_wrapper" class="gallery-images"
+                                    data-images='["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg"]'>
+                                  <div id="gallery_inner" class="row sqs-row"></div>
                                 </div>
                               </div>
                             </div>
@@ -403,7 +672,7 @@
                       <div class="sqs-block html-block sqs-block-html" id="block-a0f09f49773d5a01d0a9">
                         <div class="sqs-block-content">
                           <div class="sqs-html-content">
-                            <h3 style="text-align:center;white-space:pre-wrap;"><a href="/"></a>Cave Country Retreat</a></h3>
+                            <h3 style="text-align:center;"><a href="/"></a>Cave Country Retreat</a></h3>
                           </div>
                         </div>
                       </div>
@@ -422,7 +691,7 @@
                 <a href="https://airbnb.com/h/cavecountyretreat" target="_blank" class="Footer-nav-item">AirBnB</a>
                 <a href="https://www.vrbo.com/3570520" target="_blank" class="Footer-nav-item">VRBO</a>
                 <a href="https://www.instagram.com/cavecountryretreat/" target="_blank" class="Footer-nav-item">Instagram</a>
-                <a href="https://www.instagram.com/cavecountryretreat/" target="_blank" class="Footer-nav-item">Facebook</a>
+                <a href="https://www.facebook.com/cavecountryretreat/" target="_blank" class="Footer-nav-item">Facebook</a>
               </div>
             </nav>
             <div class="row sqs-row">
@@ -430,13 +699,105 @@
                 <p><em>An authentic Florida and Cave Diving Friendly Business - Florida Springs Rentals LLC</em>
                 <br/>~<br/>
                 contact@floridaspringsrentals.com</p>
-              </div>
-            </div>
           </div>
         </div>
       </footer>
     </div>
 
+    <div id="myModal" class="modal">
+        <div id="modal-content" class="modal-content" >
+            <div id="modal-wrapper" >
+              <img id="modal-img">
+            </div>
+            <span class="close icon_gallery" onclick="closeModal()">&times;</span>
+            <span class="prev icon_gallery">&#10094;</span>
+            <span class="next icon_gallery">&#10095;</span>
+        </div>
+    </div>
+
+    <script
+      src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+      integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+      crossorigin="anonymous"></script>
+
+    <script>
+      $(document).ready(function() {
+          var all_images = $('#gallery_wrapper').data('images');
+          var total_images = all_images.length;
+
+          var thumb_path = "/images/thumbs/";
+          var full_path = "/images/full/";
+
+          var gallery_idx = null;
+
+          $.each(all_images, function( index, value ) {
+              console.log( index + ": " + value );
+              $('#gallery_inner').append(
+                '<div class="gallery-image col sqs-col-2 span-2"><img src="' +
+                thumb_path + value + '" data-image_idx="' + index + '"></div>'
+              );
+          });
+
+          $(".gallery-image").on('click', function(event){
+              event.stopPropagation();
+              event.stopImmediatePropagation();
+              var img_idx = $(event.target).data('image_idx');
+              openModal(img_idx);
+          });
+
+          function openModal(image_idx) {
+              $('#myModal').css('display', 'block');
+              set_image(image_idx);
+          }
+
+          function set_image(image_idx) {
+              gallery_idx = image_idx;
+              $('#modal-img').attr('src', full_path + all_images[image_idx]);
+          }
+
+          function closeModal() {
+              $('#myModal').css('display', 'none');
+          }
+
+          // Close the modal when clicking on the close icon
+          $('.close').click(function(e) {
+            closeModal();
+          });
+
+          // Close the modal when clicking outside of it
+          $('#modal-content').click(function(e) {
+            closeModal();
+          });
+          $('#myModal').click(function(e) {
+              closeModal();
+          });
+          $('#modal-img').click(function(e) {
+            // Do not close if click on image
+            event.stopPropagation();
+            event.stopImmediatePropagation();
+          });
+
+          function offsetImage(imgOffset) {
+              var new_idx = (
+                gallery_idx + imgOffset + total_images
+              ) % total_images; // + 6 to ensure positive
+              set_image(new_idx);
+          }
+
+          // Attach click events to prev and next buttons
+          $('.prev').click(function() {
+              event.stopPropagation();
+              event.stopImmediatePropagation();
+              offsetImage(-1);
+          });
+          $('.next').click(function() {
+              event.stopPropagation();
+              event.stopImmediatePropagation();
+              offsetImage(1);
+          });
+
+      } );
+    </script>
 
     <script>
       // Open the Mobile Menu

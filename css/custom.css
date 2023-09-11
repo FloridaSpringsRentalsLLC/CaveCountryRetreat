@@ -12,18 +12,54 @@
         clear: both;
     }
 }
+
+.tweak-index-page-fullscreen-first-page-only .Index-page--has-image:first-child {
+    min-height: calc(100vh - 100px) !important;
+}
+
+@media screen and (max-width: 640px){
+    .tweak-index-page-fullscreen-first-page-only .Index-page--has-image:first-child {
+        min-height: calc(100vh - 60px) !important;
+    }
+}
+
+.Header-nav-item {
+    text-decoration: underline;
+    text-shadow: rgb(0, 0, 0) 0px 0px 10px;
+    font-weight: 800;
+    font-family: lato;
+}
+
 .parallax1 {
     background-image: url(/images/full/5.jpg);
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
 }
 .parallax2 {
     background-image: url(/images/full/2.jpg);
-    min-height: 500px;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: cover;
+}
+
+@supports (-webkit-touch-callout: none) {
+    /* CSS specific to iOS devices */
+    .parallax-bg {
+        background-size: cover;
+        -moz-background-size: cover;
+        -webkit-background-size: cover;
+        -o-background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+}
+
+@supports not (-webkit-touch-callout: none) {
+    /* CSS for other than iOS devices */
+    .parallax-bg {
+        background-attachment: fixed;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        -webkit-background-size: cover;
+        -moz-background-size: cover;
+        overflow:hidden;
+        position: -webkit-sticky; /* Safari */
+        position: sticky;
+    }
 }
