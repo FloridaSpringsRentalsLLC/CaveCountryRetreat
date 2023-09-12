@@ -25,276 +25,6 @@
     <link rel="stylesheet" type="text/css" href="/css/site.css">
     <link rel="stylesheet" type="text/css" href="/css/custom.css">
 
-
-    <style>
-      .fullheight {
-        min-height:calc(100vh - 100px);
-        min-width:calc(100vw - 100px);
-      }
-
-      @media screen and (max-width: 640px) {
-        .fullheight {
-          min-height:calc(100vh - 40px);
-          min-width:calc(100vw - 40px);
-        }
-      }
-
-      /* Vertical Alignment Center CSS */
-      .valign-center-outer{
-        display: table;
-        height: 100%;
-        width: 100%;
-      }
-      .valign-center-inner{
-        display: table-cell;
-        text-align: center;
-        vertical-align: middle;
-      }
-      /* Section 3 CSS */
-      .sec3-container {
-        text-align: center;
-      }
-
-      @media screen and (min-width: 641px) {
-        .sec3-container {
-          display: table-cell;
-          vertical-align: middle;
-          float: unset;
-          width: 50%;
-        }
-      }
-
-      @media screen and (max-width: 640px) {
-        .sec3-container {
-          width: 100%;
-        }
-
-        .left-container {
-          margin-bottom: 50px;
-        }
-      }
-
-      /* Section 4 CSS */
-
-      .sec4-title {
-        color: white;
-        font-family: lato;
-        font-size: 75px;
-        font-style: normal;
-        font-weight: 400;
-        letter-spacing: 1.5px;
-        line-height: 75x;
-        margin-bottom: 50px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 50px;
-        pointer-events: auto;
-        text-align: center;
-        text-rendering: optimizelegibility;
-        text-shadow: rgb(0, 0, 0) 0px 0px 10px;
-        text-transform: none;
-        white-space: nowrap;
-      }
-
-      @media screen and (min-width:451px) and  (max-width: 640px) {
-        .sec4-title {
-          font-size: 30px;
-          line-height: 30px;
-        }
-      }
-
-      .call-to-action-btn{
-        border-color: #fff;
-        border-style: solid;
-        border-width: 3px;
-        padding: 25px 46px;
-        font-family: futura-pt;
-        font-size: 12px;
-        text-transform: uppercase;
-        letter-spacing: 0.3em;
-        display: inline-block;
-        width: auto;
-        line-height: normal;
-        text-shadow: 0px 0px 10px black;
-        margin: 50px;
-        font-weight: 800;
-      }
-
-      @media screen and (max-width:450px) {
-        .sec4-title {
-          font-size: 20px;
-          line-height: 30px;
-        }
-
-        .call-to-action-btn{
-          margin: 10px 0px;
-          width: 180px;
-        }
-      }
-
-      /* Section 5 - MAP & Gallery CSS */
-      .left-block-map, .right-block-gallery{
-        width: 50%;
-        display: table-cell;
-      }
-
-      .left-block-map {
-        padding-right: 20px;
-      }
-
-      .right-block-gallery {
-        padding-left: 20px;
-      }
-
-      @media screen and (max-width: 1360px) {
-        .left-block-map, .right-block-gallery{
-          width: 100%;
-          display: block;
-          padding-left: 0px;
-        }
-      }
-
-      .gallery-map-outer{
-        display: table;
-        height: 100%;
-        width: 100%;
-      }
-
-      .map-iframe {
-        aspect-ratio: 1.39;
-        width: calc(100% - 20px);
-        border: none;
-        padding: 17px;
-      }
-
-      .thumb-image {
-        cursor: pointer;
-        left: -48px;
-        top: 0px;
-        width: 288px;
-        height: 192px;
-        position: relative;
-      }
-
-      .gallery-image {
-          cursor: pointer;
-          float: left;
-          width: 33%;
-      }
-
-      .gallery-image img {
-          width: calc(100% - 20px);
-          margin:10px 0px;
-      }
-
-      @media screen and (max-width: 1360px) {
-        .gallery-image {
-            width: 33%;
-            margin:10px 0px;
-        }
-      }
-
-      @media screen and (max-width: 900px) {
-        .gallery-image {
-            width: 50%;
-        }
-      }
-
-      @media screen and (max-width: 640px) {
-        .gallery-image {
-            width: 100%;
-        }
-      }
-
-      /* Gallery Image Modal window - CSS */
-      .modal {
-        display: none;
-        position: fixed;
-        z-index: 1;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto;
-        background-color: rgba(0, 0, 0, 0.7);
-      }
-
-      @media screen and (max-width: 640px) {
-        .modal {
-          top:40px;
-        }
-      }
-
-      .modal-content {
-          position: relative;
-          margin: auto;
-          max-width: 100%; /* Set maximum width to 100% of screen width */
-          max-height: 100%; /* Set maximum height to 100% of screen height */
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          justify-content: center;
-          padding: 50px;
-      }
-
-      #modal-wrapper {
-          max-width: calc(100vw - 50px * 2); /* Set maximum image width to fit the screen */
-          max-height: calc(100vh - 50px * 2); /* Set maximum image height to fit the screen */
-          background-color: white;
-      }
-
-      .modal img {
-          padding:10px;
-          max-width: calc(100vw - 50px * 2 - 20px); /* Set maximum image width to fit the screen */
-          max-height: calc(100vh - 50px * 2 - 20px); /* Set maximum image height to fit the screen */
-      }
-
-      .icon_gallery {
-          font-size: 30px;
-          font-weight: bold;
-          cursor: pointer;
-          color: white;
-      }
-
-      .close {
-          position: absolute;
-          top: 20px;
-          right: 30px;
-      }
-
-      .prev,
-      .next {
-          position: absolute;
-          top: 50%;
-          width: auto;
-          padding: 16px;
-          margin-top: -22px;
-      }
-
-      .prev {
-          left: 20px;
-      }
-
-      .next {
-          right: 20px;
-      }
-
-      @media screen and (max-width: 640px) {
-        .prev {
-            left: 0px;
-        }
-
-        .next {
-            right: 0px;
-        }
-
-        .close {
-          top: 20px;
-          right: 15px;
-      }
-      }
-    </style>
-
   </head>
 
   <body class="
@@ -655,12 +385,11 @@
 
                   <div class="right-block-gallery">
                     <p style="text-align:center;">
-                      <a href="https://www.instagram.com/cavecountryretreat/" target="_blank">Instagram</a>
+                      <a href="https://www.instagram.com/cavecountryretreat/" class="stylized_link" target="_blank">Instagram</a>
                       &nbsp; / &nbsp;
-                      <a href="https://www.facebook.com/cavecountryretreat/" target="_blank">Facebook</a>
+                      <a href="https://www.facebook.com/cavecountryretreat/" class="stylized_link" target="_blank">Facebook</a>
                     </p>
-                    <div id="gallery_wrapper" class="gallery-images"
-                        data-images='["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg"]'>
+                    <div id="gallery_wrapper" class="gallery-images">
                       <div id="gallery_inner" class="row sqs-row"></div>
                     </div>
                   </div>
@@ -710,10 +439,10 @@
             </div>
             <nav class="Footer-nav">
               <div class="Footer-nav-group">
-                <a href="https://airbnb.com/h/cavecountyretreat" target="_blank" class="Footer-nav-item">AirBnB</a>
-                <a href="https://www.vrbo.com/3570520" target="_blank" class="Footer-nav-item">VRBO</a>
-                <a href="https://www.instagram.com/cavecountryretreat/" target="_blank" class="Footer-nav-item">Instagram</a>
-                <a href="https://www.facebook.com/cavecountryretreat/" target="_blank" class="Footer-nav-item">Facebook</a>
+                <a href="https://airbnb.com/h/cavecountyretreat" target="_blank" class="Footer-nav-item stylized_link">AirBnB</a>
+                <a href="https://www.vrbo.com/3570520" target="_blank" class="Footer-nav-item stylized_link">VRBO</a>
+                <a href="https://www.instagram.com/cavecountryretreat/" target="_blank" class="Footer-nav-item stylized_link">Instagram</a>
+                <a href="https://www.facebook.com/cavecountryretreat/" target="_blank" class="Footer-nav-item stylized_link">Facebook</a>
               </div>
             </nav>
             <div class="row sqs-row">
@@ -744,18 +473,65 @@
 
     <script>
       $(document).ready(function() {
-          var all_images = $('#gallery_wrapper').data('images');
-          var total_images = all_images.length;
+          var all_images = [];
+          if (location.hostname === "localhost" || location.hostname === "127.0.0.1") {
+          // if (false) {
+            for (let i = 1; i <= 9; i++) {
+              all_images.push({
+                "full": "/images/thumbs/" + i + ".jpg",
+                "thumb": "/images/full/" + i + ".jpg",
+              });
+            }
+          }
+          else {
+            all_images = [
+              {
+                "full": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535642/fullsize/1_xesabh.jpg",
+                "thumb": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535665/thumb/1_q4cxej.jpg",
+              },
+              {
+                "full": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535644/fullsize/2_wauwaf.jpg",
+                "thumb": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535666/thumb/2_pcisqu.jpg",
+              },
+              {
+                "full": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535644/fullsize/3_em6eu0.jpg",
+                "thumb": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535667/thumb/3_sy2fpf.jpg",
+              },
+              {
+                "full": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535646/fullsize/4_hhc8rh.jpg",
+                "thumb": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535667/thumb/4_vrl1xn.jpg",
+              },
+              {
+                "full": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535647/fullsize/5_wgzfkx.jpg",
+                "thumb": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535668/thumb/5_vcircr.jpg",
+              },
+              {
+                "full": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535645/fullsize/6_nadkvh.jpg",
+                "thumb": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535669/thumb/6_iyraht.jpg",
+              },
+              {
+                "full": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535648/fullsize/7_mokevv.jpg",
+                "thumb": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535670/thumb/7_xkpghr.jpg",
+              },
+              {
+                "full": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535650/fullsize/8_f9sqt7.jpg",
+                "thumb": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535671/thumb/8_w7m3jq.jpg",
+              },
+              {
+                "full": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535649/fullsize/9_dwk17s.jpg",
+                "thumb": "https://res.cloudinary.com/do9ccpdtg/image/upload/v1694535672/thumb/9_c5rhby.jpg",
+              },
+            ];
+          }
 
-          var thumb_path = "/images/thumbs/";
-          var full_path = "/images/full/";
+          var total_images = all_images.length;
 
           var gallery_idx = null;
 
           $.each(all_images, function( index, value ) {
               $('#gallery_inner').append(
                 '<div class="gallery-image"><img src="' +
-                thumb_path + value + '" data-image_idx="' + index + '"></div>'
+                value["thumb"] + '" data-image_idx="' + index + '"></div>'
               );
           });
 
@@ -773,7 +549,7 @@
 
           function set_image(image_idx) {
               gallery_idx = image_idx;
-              $('#modal-img').attr('src', full_path + all_images[image_idx]);
+              $('#modal-img').attr('src', all_images[image_idx]["full"]);
           }
 
           function closeModal() {
