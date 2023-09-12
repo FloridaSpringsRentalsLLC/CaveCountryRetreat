@@ -151,7 +151,7 @@
     border-width: 3px;
     padding: 25px 46px;
     font-family: futura-pt;
-    font-size: 12px;
+    font-size: 15px;
     text-transform: uppercase;
     letter-spacing: 0.3em;
     display: inline-block;
@@ -160,6 +160,12 @@
     text-shadow: 0px 0px 10px black;
     margin: 50px;
     font-weight: 800;
+}
+
+@media screen and (max-width: 640px) {
+    .call-to-action-btn {
+        font-size: 12px;
+    }
 }
 
 @media screen and (max-width: 450px) {
@@ -266,6 +272,7 @@
     height: 100%;
     overflow: auto;
     background-color: rgba(0, 0, 0, 0.7);
+    z-index: 2000;
 }
 
 @media screen and (max-width: 640px) {
@@ -274,36 +281,37 @@
     }
 }
 
-.modal-content {
-    position: relative;
-    margin: auto;
-    max-width: 100%; /* Set maximum width to 100% of screen width */
-    max-height: 100%; /* Set maximum height to 100% of screen height */
+#modal-content {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 50px;
+}
+
+#modal-wrapper-padding {
+    background-color: white;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
 #modal-wrapper {
-    max-width: calc(
-        100vw - 50px * 2
-    ); /* Set maximum image width to fit the screen */
-    max-height: calc(
-        100vh - 50px * 2
-    ); /* Set maximum image height to fit the screen */
-    background-color: white;
+    width: calc(100vw - 100px - 2*40px);
+    max-height: calc(100vh - 100px - 2 *20px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 
-.modal img {
-    padding: 10px;
-    max-width: calc(
-        100vw - 50px * 2 - 20px
-    ); /* Set maximum image width to fit the screen */
-    max-height: calc(
-        100vh - 50px * 2 - 20px
-    ); /* Set maximum image height to fit the screen */
+#modal-wrapper img {
+  width: 100%;
+  height: auto;
 }
 
 .icon_gallery {
