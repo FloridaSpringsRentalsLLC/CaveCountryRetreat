@@ -132,7 +132,41 @@
         }
       }
 
-      /* Section 5 - Gallery CSS */
+      /* Section 5 - MAP & Gallery CSS */
+      .left-block-map, .right-block-gallery{
+        width: 50%;
+        display: table-cell;
+      }
+
+      .left-block-map {
+        padding-right: 20px;
+      }
+
+      .right-block-gallery {
+        padding-left: 20px;
+      }
+
+      @media screen and (max-width: 1360px) {
+        .left-block-map, .right-block-gallery{
+          width: 100%;
+          display: block;
+          padding-left: 0px;
+        }
+      }
+
+      .gallery-map-outer{
+        display: table;
+        height: 100%;
+        width: 100%;
+      }
+
+      .map-iframe {
+        aspect-ratio: 1.39;
+        width: calc(100% - 20px);
+        border: none;
+        padding: 17px;
+      }
+
       .thumb-image {
         cursor: pointer;
         left: -48px;
@@ -144,19 +178,31 @@
 
       .gallery-image {
           cursor: pointer;
+          float: left;
+          width: 33%;
       }
 
       .gallery-image img {
-          max-width: calc(100% - 20px);
-          height: auto;
-          padding: 10px;
+          width: calc(100% - 20px);
+          margin:10px 0px;
       }
 
+      @media screen and (max-width: 1360px) {
+        .gallery-image {
+            width: 33%;
+            margin:10px 0px;
+        }
+      }
+
+      @media screen and (max-width: 900px) {
+        .gallery-image {
+            width: 50%;
+        }
+      }
 
       @media screen and (max-width: 640px) {
-        .gallery-image img {
-          max-width: 100%;
-          width: 100vw;
+        .gallery-image {
+            width: 100%;
         }
       }
 
@@ -598,51 +644,27 @@
             </section>
 
             <section id="section5" class="Index-page">
-              <div class="Index-page-content ">
-                <div class="sqs-layout sqs-grid-12 columns-12" id="page-64efbcdf7cd708538a01b57b">
-                  <div class="row sqs-row">
-                    <div class="col sqs-col-12 span-12">
-                      <div class="row sqs-row">
-                        <div class="col sqs-col-6 span-6">
-                          <div class="sqs-block html-block sqs-block-html" id="block-8cc1da0e4e53368e5a92">
-                            <div class="sqs-block-content">
-                              <div class="sqs-html-content">
-                                <p style="text-align:center;">Alachua, FL</p>
-                              </div>
-                            </div>
-                          </div>
+              <div class="Index-page-content">
 
-                          <iframe src="https://snazzymaps.com/embed/518912" width="595px" height="425px" style="border:none; padding: 17px;" loading="lazy"></iframe>
+                <div class="gallery-map-outer">
 
-                        </div>
-                        <div class="col sqs-col-6 span-6">
-                          <div class="sqs-block html-block sqs-block-html" id="block-a6e5e64295bd5bf1202b">
-                            <div class="sqs-block-content">
-                              <div class="sqs-html-content">
-                                <p style="text-align:center;">
-                                  <a href="https://www.instagram.com/cavecountryretreat/" target="_blank">Instagram</a>
-                                  &nbsp; / &nbsp;
-                                  <a href="https://www.facebook.com/cavecountryretreat/" target="_blank">Facebook</a>
-                                </p>
-                              </div>
-                            </div>
-                          </div>
+                  <div class="left-block-map">
+                    <p style="text-align:center; margin-bottom: 11px;">Alachua, FL</p>
+                    <iframe src="https://snazzymaps.com/embed/518912" class="map-iframe" loading="lazy"></iframe>
+                  </div>
 
-                          <div class="sqs-block gallery-block sqs-block-gallery" id="gallery-block">
-                            <div class="sqs-block-content">
-
-                              <div class="sqs-layout sqs-grid-12 columns-12" id="page-64efbcdf7cd708538a01b57b">
-                                <div id="gallery_wrapper" class="gallery-images"
-                                    data-images='["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg"]'>
-                                  <div id="gallery_inner" class="row sqs-row"></div>
-                                </div>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
+                  <div class="right-block-gallery">
+                    <p style="text-align:center;">
+                      <a href="https://www.instagram.com/cavecountryretreat/" target="_blank">Instagram</a>
+                      &nbsp; / &nbsp;
+                      <a href="https://www.facebook.com/cavecountryretreat/" target="_blank">Facebook</a>
+                    </p>
+                    <div id="gallery_wrapper" class="gallery-images"
+                        data-images='["1.jpg", "2.jpg", "3.jpg", "4.jpg", "5.jpg", "6.jpg", "7.jpg", "8.jpg", "9.jpg"]'>
+                      <div id="gallery_inner" class="row sqs-row"></div>
                     </div>
                   </div>
+
                 </div>
               </div>
             </section>
@@ -731,9 +753,8 @@
           var gallery_idx = null;
 
           $.each(all_images, function( index, value ) {
-              console.log( index + ": " + value );
               $('#gallery_inner').append(
-                '<div class="gallery-image col sqs-col-2 span-2"><img src="' +
+                '<div class="gallery-image"><img src="' +
                 thumb_path + value + '" data-image_idx="' + index + '"></div>'
               );
           });
