@@ -299,7 +299,7 @@
     text-align: center;
 }
 
-#modal-wrapper {
+.modal-wrapper-cls {
     width: calc(100vw - 100px - 2*40px);
     max-height: calc(100vh - 100px - 2 *20px);
     overflow: hidden;
@@ -309,9 +309,18 @@
     justify-content: center;
 }
 
-#modal-wrapper img {
+.modal-wrapper-cls img {
   width: 100%;
   height: auto;
+}
+
+#modal-wrapper-loading{
+    height: calc(100vh - 100px - 2 *20px);
+}
+
+#modal-img-loading{
+    height: 350px;
+    width: 350px
 }
 
 .icon_gallery {
